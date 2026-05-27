@@ -1,0 +1,25 @@
+HTML
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>移動中...</title>
+    <script>
+        // URLの末尾についたパラメータ（?url=xxx）を解析して自動でリダイレクトする
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const targetUrl = urlParams.get('url'); // 'url' パラメータの値（DMMアフィリンク）を取得
+            
+            if (targetUrl) {
+                // 安全のためにデコードしてリダイレクト（0.1秒後に一瞬で遷移します）
+                window.location.href = decodeURIComponent(targetUrl);
+            } else {
+                document.body.innerHTML = "商品URLが見つかりませんでした。";
+            }
+        };
+    </script>
+</head>
+<body>
+    <p>DMMの商品ページへ移動しています。しばらくお待ちください...</p>
+</body>
+</html>
